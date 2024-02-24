@@ -1,11 +1,31 @@
-def find_floor_entrance(apartment_num, floors=8, entrances=4, apartments_per_floor=8):
-    apartments_per_entrance = floors * apartments_per_floor
-    entrance_num = (apartment_num - 1) // apartments_per_entrance + 1
-    apartment_num_within_entrance = (apartment_num - 1) % apartments_per_entrance + 1
-    floor_num = (apartment_num_within_entrance - 1) // apartments_per_floor + 1
-    return floor_num, entrance_num
+room = input().split()
 
-room = int(input("Введите номер квартиры: "))
+
+# Функция для определения этажа и подъезда
+def find_floor_entrance(room):
+    room_num = int(room[0])
+    if len(room) > 1:
+        entrance_num = int(room[1])
+    else:
+        entrance_num = None
+
+    # Параметры дома
+    num_floors = 8
+    num_apartments_per_floor = 4
+    num_entrances = 4
+
+    # Определение подъезда
+    if entrance_num:
+        entrance = entrance_num
+    else:
+        entrance = (room_num - 1) // (num_floors * num_apartments_per_floor) + 1
+
+    # Определение этажа
+    room_num_in_entrance = room_num - (entrance - 1) * num_floors * num_apartments_per_floor
+    floor = (room_num_in_entrance - 1) // num_apartments_per_floor + 1
+
+    return floor, entrance
+
+
 floor, entrance = find_floor_entrance(room)
-print("Этаж:", floor)
-print("Подъезд:", entrance)
+print(floor, entrance)
