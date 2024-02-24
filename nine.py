@@ -1,0 +1,11 @@
+x=[2,4,6,8,10,12]
+result_1=x[-1:2:-2]
+result_2=x[::-2]
+#result_3=x[0::0]
+result_4=x[1::3]
+result_5=x[0]
+print(result_1)
+print(result_2)
+#print(result_3)
+print(result_4)
+print(result_5)
